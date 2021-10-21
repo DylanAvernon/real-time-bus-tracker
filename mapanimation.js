@@ -1,4 +1,4 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoiZHlsYW5hdmVybm9uIiwiYSI6ImNrdXhoZmlwMjR3dmkydW9md2t0ZHZ6bGsifQ.WbabgLhX0Cn8b2IgPFBVlQ';
+mapboxgl.accessToken = 'your_access_token';
 let markers = [];
 let colors = ['', '#000000', '#5B618A', '#9EADC8', '#B9E28C', '#D6D84F', '#02394A', '#043565', '#5158BB', '#F26DF9', '#EB4B98',
 				'#48ACF0', '#594236', '#6F584B', '#93A3BC', '#CCDDE2', '#D4CBE5', '#CFC7D2', '#BEA8AA', '#9E9885', '#7C7F65',
@@ -44,7 +44,7 @@ async function run(){
 }
 // Request bus data from MBTA
 async function getBuses(route){
-	const url = `https://api-v3.mbta.com/vehicles?filter[route]=${route}&include=trip&api_key=8d45c6814561462285ddb70e91ad5058`;
+	const url = `https://api-v3.mbta.com/vehicles?filter[route]=${route}&include=trip&api_key=your_api_key`;
 	const response = await fetch(url);
 	const json     = await response.json();
 	return json.data;
