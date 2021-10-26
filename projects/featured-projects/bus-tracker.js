@@ -43,10 +43,11 @@ let busTrackerStructure = {
         },
         'Start Bus Tracker': function startBusTracker() {
             run();
-            busTrackerProperties.interval = setInterval(run, 15000);
+            busTrackerProperties.interval.push(setInterval(run, 15000));
         },
         'Stop Bus Tracker': function stopBusTracker() {
-            clearInterval(busTrackerProperties.interval);
+            clearInterval(busTrackerProperties.interval[0]);
+            busTrackerProperties.interval.pop();
         }
     },
     classList: {
