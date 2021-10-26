@@ -1,33 +1,6 @@
 import { MapBox } from '../../components/map-box.js';
-import { getBuses } from '../../components/helpers.js';
+import { getBuses, run } from '../../components/helpers.js';
 
-async function run() {
-    let busObjects = [];
-    for (let route = 1; route <= 30; route++) {
-        let buses = await getBuses(route, busTrackerProperties.mbtaApiKey);
-        if (buses.length > 0) {
-            let busObject = {
-                route: route,
-                buses: buses,
-                color: busTrackerProperties.colors[route]
-            };
-            busObjects.push(busObject);
-        }
-    }
-
-    if (busTrackerProperties.markers.length > 0) {
-        busTrackerProperties.markers.forEach((marker) => marker.remove());
-    }
-
-    busObjects.forEach((busObject) => {
-        busObject.buses.forEach((bus) => {
-            let marker = new mapboxgl.Marker({color: busObject.color})
-                .setLngLat([bus.attributes.longitude, bus.attributes.latitude])
-                .addTo(busTrackerProperties.map);
-            busTrackerProperties.markers.push(marker);
-        });
-    });
-}
 let busTrackerStructure = {
     title: 'Bus Tracker',
     buttons: {
@@ -42,8 +15,8 @@ let busTrackerStructure = {
             });
         },
         'Start Bus Tracker': function startBusTracker() {
-            run();
-            busTrackerProperties.interval.push(setInterval(run, 15000));
+            run(busTrackerProperties.mbtaApiKey, busTrackerProperties.colors, busTrackerProperties.markers, busTrackerProperties.map);
+            busTrackerProperties.interval.push(setInterval(run, 15000, busTrackerProperties.mbtaApiKey, busTrackerProperties.colors, busTrackerProperties.markers, busTrackerProperties.map));
         },
         'Stop Bus Tracker': function stopBusTracker() {
             clearInterval(busTrackerProperties.interval[0]);
