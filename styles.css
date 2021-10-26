@@ -1,10 +1,91 @@
-body { 
-    margin: 0; 
-    padding: 0; 
+body {
+    height: 100%;
 }
-#map { 
+header {
+    text-align: center;
+}
+h3 {
+    width: 517px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+    text-align: center;
+}
+button {
+    margin-bottom: 2px;
+    margin-top: 2px;
+    margin-right: 2px;
+}
+
+#profile-image { 
+    height: 250px;
+    border-radius: 100%;
+}
+
+#simulations, #text-processors, #featured-projects {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navigation-bar {
+    width: 500px;
+    margin-bottom: 5px;
+}
+.permutor-container {
+    padding: 5px;
+}
+.container {
+    position: relative;
+    outline: 3px solid black;
+    margin-bottom: 50px;
+    width: 500px;
+    height: 500px;
+}
+.io-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin-bottom: 50px;
+    outline: 3px solid black;
+}
+.io-container-subcontainer {
+    width: 500px;
+    height: 250px;
+    
+}
+.io-container div:first-child {
+    outline: 3px solid black;
+    word-wrap: break-word;
+    overflow-y: scroll;
+}
+
+.ball, .pacman {
+    z-index:4;
+    position: absolute;
+    width:50px;
+    height:50px;
+}
+.ball {
+    border-radius: 50%;
+}
+.max-standard {
+    max-height: 3rem;
+}
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 60px);
+    grid-template-rows: repeat(1, 60px);
+    grid-gap: 10px;
+}
+/* #map { 
     position: absolute; 
     top: 0; 
     bottom: 0; 
     width: 100%; 
-}
+} */

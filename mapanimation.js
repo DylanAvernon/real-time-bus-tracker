@@ -43,7 +43,7 @@ async function run(){
 	setTimeout(run, 15000);
 }
 // Request bus data from MBTA
-async function getBuses(route){
+async function getBuses(route, apiKey){
 	const url = `https://api-v3.mbta.com/vehicles?filter[route]=${route}&include=trip&api_key=your_api_key`;
 	const response = await fetch(url);
 	const json     = await response.json();
